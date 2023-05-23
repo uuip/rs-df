@@ -1,6 +1,5 @@
-use std::path::PathBuf;
-
 use polars::prelude::*;
+use std::path::PathBuf;
 
 use crate::dataset_util::schemas;
 

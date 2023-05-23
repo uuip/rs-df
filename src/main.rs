@@ -1,8 +1,7 @@
 #![allow(dead_code, unused_variables)]
 
-use std::env;
-
 use polars::prelude::*;
+use std::env;
 
 use crate::io_util::*;
 
