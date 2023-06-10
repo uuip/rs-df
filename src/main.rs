@@ -98,7 +98,12 @@ fn main() {
     let _ = df
         .clone()
         .lazy()
-        .join(df1.lazy(), [col("ID1")], [col("ID1")], JoinType::Left)
+        .join(
+            df1.lazy(),
+            [col("ID1")],
+            [col("ID1")],
+            JoinArgs::new(JoinType::Left),
+        )
         .collect()
         .unwrap();
     write_parquet(&mut df, "data.pq");
