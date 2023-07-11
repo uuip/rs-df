@@ -13,7 +13,7 @@ fn main() {
     env::set_var("POLARS_FMT_MAX_COLS", "20");
     let o = GetOutput::from_type(DataType::Int32);
     let incl = Series::from_vec("", vec![0.0_f32]);
-    let c = Series::from_vec("", vec![1.0_f64, 2.0]);
+    let c = vec![1.0_f64, 2.0];
     let path = r"50w_2022.csv";
     // let df: DataFrame = read_csv(path);
     // let df = read_csv_lazy(path);
@@ -85,9 +85,8 @@ fn main() {
     );
     println!("{:?}", r11_rank);
 
-    // qcut 需要单独导入, cut的bins数据类型与series要一致
     let s = df.column("R11").unwrap().cast(&DataType::Float64).unwrap();
-    let s_cut = cut(&s, c, None, None, None, false).unwrap();
+    let s_cut = cut(&s, c, None, false, false).unwrap();
     println!("{:?}", s_cut);
 
     println!("{:?}", df.select(["R1", "R11", "xxx"]).unwrap().mean());
